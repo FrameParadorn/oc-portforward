@@ -1,4 +1,4 @@
-import { Button, Input, Td } from '@chakra-ui/react';
+import { Box, Button, Input, Td } from '@chakra-ui/react';
 import { useCallback, useEffect, useState } from 'react';
 import { Service } from '../main/service.d';
 
@@ -79,9 +79,9 @@ export default function AppItem(props: Props) {
 
   return (
     <>
-      <Td>{props.port}</Td>
-      <Td>:</Td>
-      <Td>
+      <Box mr={2}>{props.port}</Box>
+      <Box mr={2}>:</Box>
+      <Box mr={2}>
         <Input
           w={'100px'}
           defaultValue={localPort}
@@ -91,8 +91,8 @@ export default function AppItem(props: Props) {
           onChange={(e) => setLocalPort(Number(e.target.value))}
           disabled={isConnected}
         />
-      </Td>
-      <Td>
+      </Box>
+      <Box mr={5}>
         {isConnected && (
           <Button onClick={() => disconnect()} colorScheme="red" w={'110px'}>
             Disable
@@ -110,8 +110,8 @@ export default function AppItem(props: Props) {
             Connect
           </Button>
         )}
-      </Td>
-      {<Td w={'20px'}></Td>}
+      </Box>
+      {<Box w={'20px'}></Box>}
     </>
   );
 }

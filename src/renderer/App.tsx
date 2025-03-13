@@ -2,6 +2,7 @@ import { MemoryRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import { useEffect, useState } from 'react';
 import {
+  Box,
   Card,
   CardBody,
   Container,
@@ -33,23 +34,15 @@ function Home() {
         return (
           <Card mb={'10px'} key={di}>
             <CardBody>
-              <HStack justifyContent={'space-between'}>
-                <Text>{d.serviceName}</Text>
-                <TableContainer>
-                  <Table>
-                    <Tbody>
-                      <Tr>
-                        {d.ports.map((p, pi) => (
-                          <AppItem
-                            serviceName={d.serviceName}
-                            port={p}
-                            key={pi}
-                          />
-                        ))}
-                      </Tr>
-                    </Tbody>
-                  </Table>
-                </TableContainer>
+              <HStack>
+                <Box w={'50%'}>
+                  <Text>{d.serviceName}</Text>
+                </Box>
+                <HStack w={'50%'} overflowX={'scroll'} gap={'0px'}>
+                  {d.ports.map((p, pi) => (
+                    <AppItem serviceName={d.serviceName} port={p} key={pi} />
+                  ))}
+                </HStack>
               </HStack>
             </CardBody>
           </Card>
